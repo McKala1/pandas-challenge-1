@@ -1,0 +1,26 @@
+# pandas-challenge-1
+
+##Overview
+
+*
+*
+
+
+# Part 1: Explore the Data
+
+* First, I imported pandas as "pd". Then, I made the dataframe and added the csv file in. This was where "read_csv" is incorporated. From there, I wanted to view the column names from the data set. So I made a variable named "column_names" and called the dataframe then added ".columns" to it, I also added ".tolist()" at the end as well to put the column names as a list. I then described the function to gather some more information on what I was working with. From there, I wanted to do something fun and explore the data a little further. I created a custom function to calculate the average of the dataframe column. I used the "custom_avg" function to show the average "qty" for each "category" and "subcategory" and rounded to one decimal place. This was really cool because I got to see what was popular in each category, and what items people were ordering. Then I called the three item categories that had the most entries, which were consumables, furniture, and software. Then, I also looked at which subcategory had the most entries and it was consumables with bathroom supplies. Next, I looked at the five clients with the most entries in the data. From there, I stored these client id's in a list called "top_5_ids". Lastly, I wrapped up exploring the data by looking at the total units the client with the most entries ordered which was 64,313 items!!!!
+
+# Part 2: Transform the Data
+
+* First, I created a created a column that calculates the subtotal for each line using the "unit_price" and the "qty", I multiplied them together to give me the "line_subtotal". Next, I created a column for shipping price and assumed a shipping price of $7 per pound, for orders over 50 pounds; and $10 per pound for items 50 pounds or under. For this I created a string called "total_weight", which is the "qty" and "unit_weight" multiplied together. Then, I created a string called "shipping_price" which used the ".apply" and "lambda" with an "if" and "else" statment. Which multiplied the "total_weight" by 7, if the order was over 50 pounds, and all else multiplied by 10. I then, created a column for the total price using the subtotal and the shipping price along with a sales tax of 9.25%. For this, I used the round function and added "line_subtotal" to "shipping price", and multiplied that by 1.0925 and wrote comma 2 for moving the decimal to two places. Next I, created a column for the cost of each line using "unit cost", "qty", and "shipping price" assuming the shipping cost is exactly what is charged to the client. For this, I set the "line_cost" equal to the 'unit_cost' multiplied by the 'qty', then added this to the 'shipping_price'. Lastly, I created a column for the profit of each line using line cost and line price. For this, I set the 'line_profit' to equal the 'line_price' subtracted from the 'line_cost'. 
+
+# Part 3: Confirm Your Work
+
+* For this section, I made three print statments. I had to confirm my work making sure it matched the totals that the prompt gave me. For this, I used a ".sum" function and ".2f" to show two places in the decimal. 
+
+# Part 4: Summarize and Analyze
+
+* Lastly, I needed to figure out how much the top five clients by quantity spent. For this, I used a "for" loop; called the dataframe, and created "total_spending" where I got the ".sum" from "line_price". From there I threw "total_sum" in some curley brakets with ".2f" to move the decimal two places. This gave me how much the top five clients spent by quantity. Next, I created a summary DataFrame showing the totals for the top 5 clients with the following information: total units purchased, total shipping price, total revenue, and total profit. I sorted by total profit doing a "for loop" to loop through all other colums apart from the top client ids because I want the top clients in a specific order. I added "sort_value" to put clients in ascending order. Then I, nested the "for loop" in one line for list comprehension to create a dictionary at end to pass on to data frame. I did a quick little "client_summary_data" to view my information, and get a visual of what I was looking at. From there, I formated the data and renamed the columns to names more suitable for viewer presentation. I also put the currency in millions of dollars. For this, I used "lambda", as well as  the ".apply" function. Then I, put "lambda x" in parentencies with an "f" string which consisted of "{x".2f}M" this made the sum in millions, with two deciaml places. The very last thing I did for this challange, was sort the updated data by "Total Profit" from highest to lowest. For this I did a "sort_values" function with "Total Profit (Millions)" with "ascending=False" in paraentecies. Based off my findings, the client with the identification number of 24741 had the most total units purchased at a whopping 239862 million. They also had the hightest shipping price, most total revenue, and the highest total profit. My curiosity made me look up exactly who client id number 24741 was, and what they did. Turns out is is Kendra Garrett who is a "Pension scheme manager", which I thought was pretty interesting. This excerise is great for using in the real world because you can look for any outliars in the data and see is it is an actual, truthful transaction. 
+
+
+
